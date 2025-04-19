@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Smallest Integer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Find the Smallest Integer</h1>
+  <input id="arrayInput" type="text" placeholder="Enter numbers separated by commas" />
+  <br />
+  <button onclick="findSmallest()">Find Smallest</button>
+  <div id="result"></div>
+
+  <script>
+    function findSmallest() {
+      const input = document.getElementById('arrayInput').value;
+
+      // Convert the input string into an array of numbers
+      const array = input.split(',').map(Number);
+
+      // Find the smallest integer in the array
+      const smallest = Math.min(...array);
+
+      // Display the result
+      document.getElementById('result').textContent = `The smallest integer is: ${smallest}`;
+    }
+  </script>
+  <script src="/script.js"></script>
+</body>
+</html>
