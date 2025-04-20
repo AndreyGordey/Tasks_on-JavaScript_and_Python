@@ -1,9 +1,11 @@
 import sys
 
-fizzBuzz = 100
+fizzBuzz = 30
 for i in range(fizzBuzz):
-    if i % 3 == 0 or i % 5 == 0:
-        print('fizzBuzz')
+    if i % 3 == 0:
+        print('fizz')
+    elif i % 5 == 0:
+        print(print('buzz'))
     else:
         print(i)
     
