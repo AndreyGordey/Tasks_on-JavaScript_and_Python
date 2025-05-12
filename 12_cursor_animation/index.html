@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Trail</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #282c34;
+      height: 100vh;
+      cursor: none; /* Скрываем стандартный курсор */
+    }
+
+    .trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #61dafb;
+      border-radius: 50%;
+      pointer-events: none; /* Отключаем взаимодействие с элементами следа */
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const trailCount = 10; // Количество элементов в следе
+    const trails = [];
+
+    // Создаем элементы следа
+    for (let i = 0; i < trailCount; i++) {
+      const trail = document.createElement('div');
+      trail.classList.add('trail');
+      document.body.appendChild(trail);
+      trails.push(trail);
+    }
+
+    let mouseX = 0, mouseY = 0;
+
+    // Обновляем позицию мыши
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Анимация следа
+    function animateTrail() {
+      let x = mouseX;
+      let y = mouseY;
+
+      // Расставляем элементы с небольшим отставанием
+      trails.forEach((trail, index) => {
+        setTimeout(() => {
+          trail.style.transform = `translate(${x}px, ${y}px)`;
+        }, index * 50); // Задержка между элементами
+      });
+
+      requestAnimationFrame(animateTrail);
+    }
+
+    animateTrail();
+  </script>
+</body>
+</html>
